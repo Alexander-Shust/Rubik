@@ -2,28 +2,29 @@
 
 public class FaceMover : MonoBehaviour
 {
-    [SerializeField]
-    private Transform[] _children;
+    private Transform _transform;
 
-    private bool _isAcquired;
-    
-    public void Move(Vector3 axis)
+    private void Awake()
+    {
+        _transform = transform;
+    }
+
+    public void Move()
     {
         AcquireChildren();
-        RubikManager.Moves.Add(new Move
+        RubikManager.Manager.Moves.Add(new Move
         {
-            Movable = transform,
+            Movable = _transform,
             Speed = 1.0f,
-            Axis = axis
         });
     }
 
     public void DoubleMove()
     {
         AcquireChildren();
-        RubikManager.Moves.Add(new Move
+        RubikManager.Manager.Moves.Add(new Move
         {
-            Movable = transform,
+            Movable = _transform,
             Speed = 2.0f,
         });
     }
@@ -31,22 +32,33 @@ public class FaceMover : MonoBehaviour
     public void MoveBack()
     {
         AcquireChildren();
-        RubikManager.Moves.Add(new Move
+        RubikManager.Manager.Moves.Add(new Move
         {
-            Movable = transform,
+            Movable = _transform,
             Speed = -1.0f,
         });
     }
-
+    
     private void AcquireChildren()
     {
-        if (_isAcquired) return;
+        var forward = _transform.forward;
+        var right = _transform.right;
+        AcquireChild(forward);
+        AcquireChild(-forward);
+        AcquireChild(right);
+        AcquireChild(-right);
+        AcquireChild(forward + right);
+        AcquireChild(-(forward + right));
+        AcquireChild(forward - right);
+        AcquireChild(right - forward);
+    }
 
-        foreach (var child in _children)
+    private void AcquireChild(Vector3 direction)
+    {
+        var ray = new Ray(transform.position, _transform.position + direction * 2.0f);
+        if (Physics.Raycast(ray, out var hit, float.MaxValue, RubikManager.Manager.Mask))
         {
-            child.SetParent(transform, true);
+            hit.collider.transform.SetParent(transform, true);
         }
-
-        _isAcquired = true;
     }
 }

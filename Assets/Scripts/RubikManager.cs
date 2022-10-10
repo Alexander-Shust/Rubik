@@ -6,16 +6,18 @@ public class RubikManager : MonoBehaviour
     [SerializeField]
     private float _turnTime = 1.0f;
 
-    public static List<Move> Moves;
+    public static RubikManager Manager;
+    public LayerMask Mask;
+    public List<Move> Moves;
 
     private Move _currentMove;
     private Quaternion _targetRotation;
-    // private Quaternion _startRotation;
     private bool _isMoving;
     private float _timeElapsed;
 
     private void Awake()
     {
+        Manager = this;
         Moves = new List<Move>();
     }
 
@@ -28,8 +30,7 @@ public class RubikManager : MonoBehaviour
             _isMoving = true;
             _timeElapsed = 0.0f;
             _currentMove = Moves[0];
-            // _startRotation = _currentMove.Movable.rotation;
-            _targetRotation = _currentMove.Movable.rotation * Quaternion.AngleAxis(90.0f, _currentMove.Axis);
+            _targetRotation = _currentMove.Movable.rotation * Quaternion.AngleAxis(90.0f * _currentMove.Speed, Vector3.up);
             Moves.RemoveAt(0);
         }
         
@@ -42,8 +43,6 @@ public class RubikManager : MonoBehaviour
             movable.rotation = _targetRotation;
             return;
         }
-        // var offset = Mathf.Lerp(0.0f, _currentMove.Speed * 90.0f, _timeElapsed / _turnTime);
-        movable.Rotate(_currentMove.Axis, _currentMove.Speed * 90.0f / _turnTime * deltaTime);
-        // movable.rotation *= Quaternion.Slerp(_startRotation, _targetRotation, _turnTime - _timeLeft);
+        movable.Rotate(Vector3.up, _currentMove.Speed * 90.0f / _turnTime * deltaTime);
     }
 }

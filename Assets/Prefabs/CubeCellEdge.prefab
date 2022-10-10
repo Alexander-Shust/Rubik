@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubeCellEdge
       objectReference: {fileID: 0}
+    - target: {fileID: 2918549291093196345, guid: 7fe32cc9d675b9c4ab9047d66a9ce909, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3578068318329791145, guid: 7fe32cc9d675b9c4ab9047d66a9ce909, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -117,6 +121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Face
       objectReference: {fileID: 0}
+    - target: {fileID: 7842788378135920923, guid: aebb14e18c209bb4eae1decadc18b2e4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aebb14e18c209bb4eae1decadc18b2e4, type: 3}
 --- !u!1001 &8882208204769365557
@@ -173,6 +181,10 @@ PrefabInstance:
     - target: {fileID: 7842788378135920923, guid: aebb14e18c209bb4eae1decadc18b2e4, type: 3}
       propertyPath: m_Name
       value: Face (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842788378135920923, guid: aebb14e18c209bb4eae1decadc18b2e4, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aebb14e18c209bb4eae1decadc18b2e4, type: 3}

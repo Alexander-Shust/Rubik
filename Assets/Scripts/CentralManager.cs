@@ -11,7 +11,7 @@ public class CentralManager : MonoBehaviour
 
     public void U()
     {
-        _u.Move(new Vector3(0.0f, 1.0f, 0.0f));
+        _u.Move();
     }
 
     public void U2()
@@ -26,7 +26,7 @@ public class CentralManager : MonoBehaviour
 
     public void D()
     {
-        // _d.Move();
+        _d.Move();
     }
 
     public void D2()
@@ -41,7 +41,7 @@ public class CentralManager : MonoBehaviour
 
     public void L()
     {
-        // _l.Move();
+        _l.Move();
     }
 
     public void L2()
@@ -56,7 +56,7 @@ public class CentralManager : MonoBehaviour
 
     public void R()
     {
-        // _r.Move();
+        _r.Move();
     }
 
     public void R2()
@@ -71,7 +71,7 @@ public class CentralManager : MonoBehaviour
 
     public void F()
     {
-        // _f.Move();
+        _f.Move();
     }
 
     public void F2()
@@ -86,7 +86,7 @@ public class CentralManager : MonoBehaviour
 
     public void B()
     {
-        // _b.Move();
+        _b.Move();
     }
 
     public void B2()
