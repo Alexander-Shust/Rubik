@@ -11,7 +11,6 @@ public class FaceMover : MonoBehaviour
 
     public void Move()
     {
-        AcquireChildren();
         RubikManager.Manager.Moves.Add(new Move
         {
             Movable = _transform,
@@ -21,7 +20,6 @@ public class FaceMover : MonoBehaviour
 
     public void DoubleMove()
     {
-        AcquireChildren();
         RubikManager.Manager.Moves.Add(new Move
         {
             Movable = _transform,
@@ -31,7 +29,6 @@ public class FaceMover : MonoBehaviour
 
     public void MoveBack()
     {
-        AcquireChildren();
         RubikManager.Manager.Moves.Add(new Move
         {
             Movable = _transform,
@@ -39,7 +36,7 @@ public class FaceMover : MonoBehaviour
         });
     }
     
-    private void AcquireChildren()
+    public void AcquireChildren()
     {
         var forward = _transform.forward;
         var right = _transform.right;
