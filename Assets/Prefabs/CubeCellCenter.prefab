@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2918549291093196345, guid: 7fe32cc9d675b9c4ab9047d66a9ce909, type: 3}
       propertyPath: m_Name
-      value: CubeCellBase
+      value: CubeCellCenter
       objectReference: {fileID: 0}
     - target: {fileID: 3578068318329791145, guid: 7fe32cc9d675b9c4ab9047d66a9ce909, type: 3}
       propertyPath: m_RootOrder
@@ -57,3 +57,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fe32cc9d675b9c4ab9047d66a9ce909, type: 3}
+--- !u!1 &1001831881193745116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2918549291093196345, guid: 7fe32cc9d675b9c4ab9047d66a9ce909, type: 3}
+  m_PrefabInstance: {fileID: 2695401990055597285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8775861374951498144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001831881193745116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718197aa6d3b45b0879058bd27bd5f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _u: {fileID: 0}
+  _d: {fileID: 0}
+  _l: {fileID: 0}
+  _r: {fileID: 0}
+  _f: {fileID: 0}
+  _b: {fileID: 0}
