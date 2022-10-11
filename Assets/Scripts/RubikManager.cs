@@ -16,6 +16,7 @@ public class RubikManager : MonoBehaviour
     public static RubikManager Manager;
     public LayerMask Mask;
     public List<Move> Moves;
+    public bool IsMoving => _isMoving;
 
     private Move _currentMove;
     private Quaternion _targetRotation;
