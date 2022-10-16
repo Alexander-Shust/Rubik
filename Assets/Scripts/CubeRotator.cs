@@ -19,7 +19,9 @@ public class CubeRotator : MonoBehaviour
 
     private bool _isPaused;
 
-    public bool IsPaused { get => _isPaused;
+    public bool IsPaused 
+    { 
+        get => _isPaused;
         set
         {
             _isPaused = value;
@@ -43,7 +45,7 @@ public class CubeRotator : MonoBehaviour
 
     private void Update()
     {
-        if (_isPaused) return;
+        if (IsPaused) return;
         if (_manager.IsMoving)
         {
             IsPaused = true;

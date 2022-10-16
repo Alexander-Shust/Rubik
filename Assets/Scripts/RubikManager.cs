@@ -15,10 +15,10 @@ public class RubikManager : MonoBehaviour
 
     public static RubikManager Manager;
     public LayerMask Mask;
-    public List<Move> Moves;
+    public List<PhysicalMove> Moves;
     public bool IsMoving => _isMoving;
 
-    private Move _currentMove;
+    private PhysicalMove _currentMove;
     private Quaternion _targetRotation;
     private bool _isMoving;
     private float _timeElapsed;
@@ -26,7 +26,7 @@ public class RubikManager : MonoBehaviour
     private void Awake()
     {
         Manager = this;
-        Moves = new List<Move>();
+        Moves = new List<PhysicalMove>();
         _command.text = "Enter spin sequence here...";
     }
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public struct Move
+public struct PhysicalMove
 {
     public Transform Movable;
     public float Speed;
