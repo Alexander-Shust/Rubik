@@ -307,7 +307,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
   m_PrefabInstance: {fileID: 8030422393651252695}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8030422393651252697}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ec27fbc0dc00a7489d552200c2bb6f8, type: 3}
@@ -4862,18 +4862,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
-      propertyPath: _solver
+    - target: {fileID: 8030422393651252698, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
+      propertyPath: _pauseButton
       value: 
-      objectReference: {fileID: 8030422393651252699}
+      objectReference: {fileID: 2120476845}
+    - target: {fileID: 8030422393651252698, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
+      propertyPath: _rotateSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030422393651252698, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
+      propertyPath: _startButton
+      value: 
+      objectReference: {fileID: 151529348}
     - target: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
       propertyPath: _command
       value: 
       objectReference: {fileID: 512007535}
     - target: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
-      propertyPath: _manager
-      value: 
-      objectReference: {fileID: 8030422393651252696}
+      propertyPath: _turnTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8030422393658515085, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4935,34 +4943,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718197aa6d3b45b0879058bd27bd5f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8030422393651252697 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8030422393658515086, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
+--- !u!114 &8030422393651252698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8030422393651252698, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
   m_PrefabInstance: {fileID: 8030422393651252695}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8030422393651252698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8030422393651252697}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ce47d90771542aa9afc6d4bdf06e53f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startButton: {fileID: 151529348}
-  _pauseButton: {fileID: 2120476845}
-  _manager: {fileID: 62346075}
-  _rotateSpeed: 50
---- !u!114 &8030422393651252699
+--- !u!114 &8030422393651252699 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8030422393651252699, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
+  m_PrefabInstance: {fileID: 8030422393651252695}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8030422393651252697}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db36fc24f1994e5fb6c0883da0ad58e2, type: 3}
