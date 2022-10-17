@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class CubeSolver : MonoBehaviour
@@ -71,44 +70,57 @@ public class CubeSolver : MonoBehaviour
         _state = (int[]) State.ReadyState.Clone();
     }
 
+    private void Start()
+    {
+	    Reset();
+	    _state = Move(Moves.U2, _state);
+	    _state = Move(Moves.F2, _state);
+	    _state = Move(Moves.F2, _state);
+	    _state = Move(Moves.F2, _state);
+	    _state = Move(Moves.L2, _state);
+	    _state = Move(Moves.B2, _state);
+	    _state = Move(Moves.B2, _state);
+    }
+
     public void Solve()
     {
-        Debug.LogError("Trying to solve...");
-        Reset();
-        // _state = Move(Moves.U2, _state);
-        _state = Move(Moves.L2, _state);
-        var moves = SetEdgeOrientation();
-        var moveText = new List<string>();
-        foreach (var move in moves)
-        {
-            moveText.Add(move switch
-            {
-	            Moves.U => "U",
-	            Moves.U2 => "U2",
-	            Moves.Ub => "U'",
-	            Moves.D => "D",
-	            Moves.D2 => "D2",
-	            Moves.Db => "D'",
-	            Moves.F => "F",
-	            Moves.F2 => "F2",
-	            Moves.Fb => "F'",
-	            Moves.B => "B",
-	            Moves.B2 => "B2",
-	            Moves.Bb => "B'",
-	            Moves.L => "L",
-	            Moves.L2 => "L2",
-	            Moves.Lb => "L'",
-	            Moves.R => "R",
-	            Moves.R2 => "R2",
-	            Moves.Rb => "R'",
-	            _ => throw new ArgumentOutOfRangeException()
-            });
-        }
+        // Debug.LogError("Trying to solve...");
+        UpdateState(SetEdgeOrientation());
+        UpdateState(SetCornerOrientation());
+        UpdateState(SetHtr());
+        UpdateState(SetFinal());
+    }
 
-        foreach (var text in moveText)
-        {
-	        Debug.LogError(text);
-        }
+    private void UpdateState(LinkedList<Moves> moves)
+    {
+	    var moveText = string.Empty;
+	    foreach (var move in moves)
+	    {
+		    _state = Move(move, _state);
+		    moveText += move switch
+		    {
+			    Moves.U => "U",
+			    Moves.U2 => "U2",
+			    Moves.Ub => "U'",
+			    Moves.D => "D",
+			    Moves.D2 => "D2",
+			    Moves.Db => "D'",
+			    Moves.F => "F",
+			    Moves.F2 => "F2",
+			    Moves.Fb => "F'",
+			    Moves.B => "B",
+			    Moves.B2 => "B2",
+			    Moves.Bb => "B'",
+			    Moves.L => "L",
+			    Moves.L2 => "L2",
+			    Moves.Lb => "L'",
+			    Moves.R => "R",
+			    Moves.R2 => "R2",
+			    Moves.Rb => "R'",
+			    _ => throw new ArgumentOutOfRangeException()
+		    };
+	    }
+	    Debug.LogError(moveText);
     }
 
     private int[] Move(Moves move, int[] state)
@@ -122,30 +134,35 @@ public class CubeSolver : MonoBehaviour
             var oldState = (int[]) state.Clone();
             for (var i = 0; i < 8; ++i)
             {
-                var victim = GetNeighbours(face)[i] + i >= 4 ? 12 : 0;
-                var affector = GetNeighbours(face)[(i & 3) == 3 ? i - 3 : i + 1] + i >= 4 ? 12 : 0;
-                int rotationOffset = 0;
+	            var victim = GetNeighbours(face)[i];
+	            victim += i >= 4 ? 12 : 0;
+                var affector = GetNeighbours(face)[(i & 3) == 3 ? i - 3 : i + 1];
+                affector += i >= 4 ? 12 : 0;
+                int rotationOffset;
                 if (i <= 3)
                 {
-                    rotationOffset = face == Faces.F || face == Faces.B ? 1 : 0;
+	                rotationOffset = face == Faces.F || face == Faces.B ? 1 : 0;
                 }
                 else
                 {
-                    rotationOffset = face == Faces.U || face == Faces.D ? 0 : 2 - i % 2;
+	                rotationOffset = face == Faces.U || face == Faces.D ? 0 : 2 - i % 2;
                 }
                 state[victim] = oldState[affector];
                 state[victim + 20] = oldState[affector + 20] + rotationOffset;
-                if (count == turnCount)
+                if (count == turnCount - 1)
                 {
-                    state[victim + 20] %= 2 + i >= 4 ? 1 : 0;
+                    state[victim + 20] %= i >= 4 ? 3 : 2;
                 }
             }
         }
         return state;
     }
 
-    private List<Moves> FindMoves(Phases phase, int[] currentPhaseState, int[] targetPhaseState)
+    private LinkedList<Moves> FindMoves(Phases phase, int[] currentPhaseState, int[] targetPhaseState)
     {
+	    if (currentPhaseState.SequenceEqual(targetPhaseState))
+		    return new LinkedList<Moves>();
+	    
         var stateQueue = new Queue<int[]>();
 		stateQueue.Enqueue(_state);
 		stateQueue.Enqueue(State.ReadyState);
@@ -156,24 +173,34 @@ public class CubeSolver : MonoBehaviour
 		isForward[currentPhaseState] = true;
 		isForward[targetPhaseState] = false;
 
-		// var insanity = 10000;
-		// while (insanity-- > 0)
 		while (true)
 		{
 			// Get next state from queue, find its ID and direction
 			var oldState = stateQueue.Dequeue();
-			var oldPhaseState = GetEdgeOrientations(oldState);
+			var oldPhaseState = phase switch
+			{
+				Phases.EO => GetEdgeOrientation(oldState),
+				Phases.CO => GetCornerOrientation(oldState),
+				Phases.HTR => GetHtr(oldState),
+				Phases.Final => oldState,
+				_ => throw new ArgumentOutOfRangeException(nameof(phase), phase, null)
+			};
 			var oldDir = isForward[oldPhaseState];
 
 			for (var move = 0; move < 18; ++move)
 			{
-				// only try the allowed moves in the current phase
-				if (!GetAllowedMoves(phase).Contains((Moves) move))
-					continue;
+				if (!GetAllowedMoves(phase).Contains((Moves) move)) continue;
 				
 				// generate a new state from the old state
 				int[] newState = Move((Moves) move, oldState);
-				int[] newPhaseState = GetEdgeOrientations(newState); 
+				int[] newPhaseState = phase switch
+				{
+					Phases.EO => GetEdgeOrientation(newState),
+					Phases.CO => GetCornerOrientation(newState),
+					Phases.HTR => GetHtr(newState),
+					Phases.Final => newState,
+					_ => throw new ArgumentOutOfRangeException(nameof(phase), phase, null)
+				};
 				if (isForward.TryGetValue(newPhaseState, out var newDir))
 				{
 
@@ -188,20 +215,20 @@ public class CubeSolver : MonoBehaviour
 						}
 
 						// build a linked list for the moves found in this phase
-						var result = new List<Moves>();
-						result.Insert(0, (Moves) move);
+						var result = new LinkedList<Moves>();
+						result.AddFirst((Moves) move);
 
 						// traverse backward to beginning state
 						while (!oldPhaseState.SequenceEqual(currentPhaseState))
 						{
-							result.Insert(0, (Moves) lastMove[oldPhaseState]);
+							result.AddFirst((Moves) lastMove[oldPhaseState]);
 							oldPhaseState = predecessor[oldPhaseState];
 						}
 						
 						// traverse forward to goal state
 						while (!newPhaseState.SequenceEqual(targetPhaseState))
 						{
-							result.Add(AntiMove(lastMove[newPhaseState]));
+							result.AddLast(AntiMove(lastMove[newPhaseState]));
 							newPhaseState = predecessor[newPhaseState];
 						}
 
@@ -223,7 +250,7 @@ public class CubeSolver : MonoBehaviour
 		}
     }
 
-    private Moves AntiMove(int move)
+    private static Moves AntiMove(int move)
     {
 	    return (Moves) move switch
 	    {
@@ -249,16 +276,53 @@ public class CubeSolver : MonoBehaviour
 	    };
     }
 
-    private int[] GetEdgeOrientations(int[] source)
+    private int[] GetEdgeOrientation(int[] source)
     {
 	    var target = new int[12];
 	    Array.Copy(source, 20, target, 0, 12);
 	    return target;
     }
 
-    private List<Moves> SetEdgeOrientation()
+    private int[] GetCornerOrientation(int[] source)
     {
-	    return FindMoves(Phases.EO, GetEdgeOrientations(_state), GetEdgeOrientations(State.ReadyState));
+	    var target = new int[8];
+	    Array.Copy(source, 31, target, 0, 8);
+	    for (int e = 0; e < 12; e++)
+		    target[0] |= (source[e] / 8) << e;
+	    return target;
+    }
+
+    private int[] GetHtr(int[] source)
+    {
+	    var target = new[] { 0, 0, 0 };
+	    for (int e = 0; e < 12; e++)
+		    target[0] |= ((source[e] > 7) ? 2 : (source[e] & 1)) << (2 * e);
+	    for (int c = 0; c < 8; c++)
+		    target[1] |= ((source[c + 12] - 12) & 5) << (3 * c);
+	    for (int i = 12; i < 20; i++)
+	    for (int j = i + 1; j < 20; j++)
+		    target[2] ^= Convert.ToInt32(source[i] > source[j]);
+	    return target;
+    }
+
+    private LinkedList<Moves> SetEdgeOrientation()
+    {
+	    return FindMoves(Phases.EO, GetEdgeOrientation(_state), GetEdgeOrientation(State.ReadyState));
+    }
+
+    private LinkedList<Moves> SetCornerOrientation()
+    {
+	    return FindMoves(Phases.CO, GetCornerOrientation(_state), GetCornerOrientation(State.ReadyState));
+    }
+
+    private LinkedList<Moves> SetHtr()
+    {
+	    return FindMoves(Phases.HTR, GetHtr(_state), GetHtr(State.ReadyState));
+    }
+
+    private LinkedList<Moves> SetFinal()
+    {
+	    return FindMoves(Phases.Final, _state, State.ReadyState);
     }
     
     private class ArrayComparer : IEqualityComparer<int[]>
