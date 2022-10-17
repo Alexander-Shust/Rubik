@@ -25,7 +25,7 @@ public class CubeSolver : MonoBehaviour
     {
         return phase switch
         {
-            Phases.EO => new []
+            Phases.Eo => new []
             {
 	            Moves.U, Moves.U2, Moves.Ub,
 	            Moves.D, Moves.D2, Moves.Db,
@@ -34,7 +34,7 @@ public class CubeSolver : MonoBehaviour
 	            Moves.L, Moves.L2, Moves.Lb,
 	            Moves.R, Moves.R2, Moves.Rb
             },
-            Phases.CO =>  new []
+            Phases.Co =>  new []
             {
 	            Moves.U, Moves.U2, Moves.Ub,
 	            Moves.D, Moves.D2, Moves.Db,
@@ -43,7 +43,7 @@ public class CubeSolver : MonoBehaviour
 	            Moves.L, Moves.L2, Moves.Lb,
 	            Moves.R, Moves.R2, Moves.Rb
             },
-            Phases.HTR => new []
+            Phases.Htr => new []
             {
 	            Moves.U, Moves.U2, Moves.Ub,
 	            Moves.D, Moves.D2, Moves.Db,
@@ -73,18 +73,19 @@ public class CubeSolver : MonoBehaviour
     private void Start()
     {
 	    Reset();
-	    _state = Move(Moves.U2, _state);
-	    _state = Move(Moves.F2, _state);
-	    _state = Move(Moves.F2, _state);
+	    _state = Move(Moves.U, _state);
+	    // _state = Move(Moves.F2, _state);
+	    // _state = Move(Moves.F2, _state);
 	    _state = Move(Moves.F2, _state);
 	    _state = Move(Moves.L2, _state);
-	    _state = Move(Moves.B2, _state);
-	    _state = Move(Moves.B2, _state);
+	    // _state = Move(Moves.B2, _state);
+	    _state = Move(Moves.Bb, _state);
+	    _state = Move(Moves.Bb, _state);
+	    _state = Move(Moves.Bb, _state);
     }
 
     public void Solve()
     {
-        // Debug.LogError("Trying to solve...");
         UpdateState(SetEdgeOrientation());
         UpdateState(SetCornerOrientation());
         UpdateState(SetHtr());
@@ -175,13 +176,12 @@ public class CubeSolver : MonoBehaviour
 
 		while (true)
 		{
-			// Get next state from queue, find its ID and direction
 			var oldState = stateQueue.Dequeue();
 			var oldPhaseState = phase switch
 			{
-				Phases.EO => GetEdgeOrientation(oldState),
-				Phases.CO => GetCornerOrientation(oldState),
-				Phases.HTR => GetHtr(oldState),
+				Phases.Eo => GetEdgeOrientation(oldState),
+				Phases.Co => GetCornerOrientation(oldState),
+				Phases.Htr => GetHtr(oldState),
 				Phases.Final => oldState,
 				_ => throw new ArgumentOutOfRangeException(nameof(phase), phase, null)
 			};
@@ -191,41 +191,35 @@ public class CubeSolver : MonoBehaviour
 			{
 				if (!GetAllowedMoves(phase).Contains((Moves) move)) continue;
 				
-				// generate a new state from the old state
 				int[] newState = Move((Moves) move, oldState);
 				int[] newPhaseState = phase switch
 				{
-					Phases.EO => GetEdgeOrientation(newState),
-					Phases.CO => GetCornerOrientation(newState),
-					Phases.HTR => GetHtr(newState),
+					Phases.Eo => GetEdgeOrientation(newState),
+					Phases.Co => GetCornerOrientation(newState),
+					Phases.Htr => GetHtr(newState),
 					Phases.Final => newState,
 					_ => throw new ArgumentOutOfRangeException(nameof(phase), phase, null)
 				};
 				if (isForward.TryGetValue(newPhaseState, out var newDir))
 				{
 
-					// if we have already found this new state from the other direction, then we can construct a full path
 					if (newDir != oldDir)
 					{
-						// swap directions if necessary
 						if (!oldDir)
 						{
 							(newPhaseState, oldPhaseState) = (oldPhaseState, newPhaseState);
 							move = (int) AntiMove(move);
 						}
 
-						// build a linked list for the moves found in this phase
 						var result = new LinkedList<Moves>();
 						result.AddFirst((Moves) move);
 
-						// traverse backward to beginning state
 						while (!oldPhaseState.SequenceEqual(currentPhaseState))
 						{
 							result.AddFirst((Moves) lastMove[oldPhaseState]);
 							oldPhaseState = predecessor[oldPhaseState];
 						}
 						
-						// traverse forward to goal state
 						while (!newPhaseState.SequenceEqual(targetPhaseState))
 						{
 							result.AddLast(AntiMove(lastMove[newPhaseState]));
@@ -234,13 +228,10 @@ public class CubeSolver : MonoBehaviour
 
 						return result;
 					}
-					// Debug.LogError("Cycling...");
 				}
 
-				// if we have not seen this new state before, add it to queue and dictionaries
 				else
 				{
-					Debug.LogError("Adding...");
 					stateQueue.Enqueue(newState);
 					isForward[newPhaseState] = oldDir;
 					lastMove[newPhaseState] = move;
@@ -307,17 +298,17 @@ public class CubeSolver : MonoBehaviour
 
     private LinkedList<Moves> SetEdgeOrientation()
     {
-	    return FindMoves(Phases.EO, GetEdgeOrientation(_state), GetEdgeOrientation(State.ReadyState));
+	    return FindMoves(Phases.Eo, GetEdgeOrientation(_state), GetEdgeOrientation(State.ReadyState));
     }
 
     private LinkedList<Moves> SetCornerOrientation()
     {
-	    return FindMoves(Phases.CO, GetCornerOrientation(_state), GetCornerOrientation(State.ReadyState));
+	    return FindMoves(Phases.Co, GetCornerOrientation(_state), GetCornerOrientation(State.ReadyState));
     }
 
     private LinkedList<Moves> SetHtr()
     {
-	    return FindMoves(Phases.HTR, GetHtr(_state), GetHtr(State.ReadyState));
+	    return FindMoves(Phases.Htr, GetHtr(_state), GetHtr(State.ReadyState));
     }
 
     private LinkedList<Moves> SetFinal()

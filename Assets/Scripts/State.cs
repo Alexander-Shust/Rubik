@@ -17,9 +17,9 @@
 
 public enum Phases
 {
-    EO = 1,
-    CO = 2,
-    HTR = 3,
+    Eo = 1,
+    Co = 2,
+    Htr = 3,
     Final = 4
 }
 
