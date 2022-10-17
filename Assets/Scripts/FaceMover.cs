@@ -11,7 +11,7 @@ public class FaceMover : MonoBehaviour
 
     public void Move()
     {
-        RubikManager.Manager.Moves.Add(new PhysicalMove
+        RubikManager.Manager.PhysicalMoves.Add(new PhysicalMove
         {
             Movable = _transform,
             Speed = 1.0f,
@@ -20,7 +20,7 @@ public class FaceMover : MonoBehaviour
 
     public void DoubleMove()
     {
-        RubikManager.Manager.Moves.Add(new PhysicalMove
+        RubikManager.Manager.PhysicalMoves.Add(new PhysicalMove
         {
             Movable = _transform,
             Speed = 2.0f,
@@ -29,7 +29,7 @@ public class FaceMover : MonoBehaviour
 
     public void MoveBack()
     {
-        RubikManager.Manager.Moves.Add(new PhysicalMove
+        RubikManager.Manager.PhysicalMoves.Add(new PhysicalMove
         {
             Movable = _transform,
             Speed = -1.0f,

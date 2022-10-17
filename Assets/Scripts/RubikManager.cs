@@ -6,6 +6,9 @@ public class RubikManager : MonoBehaviour
 {
     [SerializeField]
     private CentralManager _manager;
+
+    [SerializeField]
+    private CubeSolver _solver;
     
     [SerializeField]
     private TMP_InputField _command;
@@ -15,7 +18,7 @@ public class RubikManager : MonoBehaviour
 
     public static RubikManager Manager;
     public LayerMask Mask;
-    public List<PhysicalMove> Moves;
+    public List<PhysicalMove> PhysicalMoves;
     public bool IsMoving => _isMoving;
 
     private PhysicalMove _currentMove;
@@ -26,7 +29,7 @@ public class RubikManager : MonoBehaviour
     private void Awake()
     {
         Manager = this;
-        Moves = new List<PhysicalMove>();
+        PhysicalMoves = new List<PhysicalMove>();
         _command.text = "Enter spin sequence here...";
     }
 
@@ -34,14 +37,14 @@ public class RubikManager : MonoBehaviour
     {
         if (!_isMoving)
         {
-            if (Moves.Count == 0) return;
+            if (PhysicalMoves.Count == 0) return;
             
             _isMoving = true;
             _timeElapsed = 0.0f;
-            _currentMove = Moves[0];
+            _currentMove = PhysicalMoves[0];
             _targetRotation = _currentMove.Movable.rotation * Quaternion.AngleAxis(90.0f * _currentMove.Speed, Vector3.up);
             _currentMove.Movable.gameObject.GetComponent<FaceMover>().AcquireChildren();
-            Moves.RemoveAt(0);
+            PhysicalMoves.RemoveAt(0);
         }
         
         var deltaTime = Time.deltaTime;
@@ -58,21 +61,24 @@ public class RubikManager : MonoBehaviour
 
     public void Spin()
     {
-        if (!ParseCommand(_command.text))
+        if (ParseCommand(_command.text, out var moves))
+        {
+            _solver.Solve(moves);
+            ExecuteCommand(_command.text);
+            _command.text = string.Empty;
+        }
+        else
         {
             _command.text = "Syntax error!";
-            return;
         }
-
-        _command.text = string.Empty;
     }
 
-    private bool ParseCommand(string command)
+    private void ExecuteCommand(string command)
     {
         command = command.Replace(" ", "");
         while (FindNextToken(command, out var token))
         {
-            if (token == string.Empty) return true;
+            if (token == string.Empty) return;
             switch (token)
             {
                 case "U": _manager.U(); break;
@@ -93,6 +99,39 @@ public class RubikManager : MonoBehaviour
                 case "L": _manager.L(); break;
                 case "L2": _manager.L2(); break;
                 case "L'": _manager.Lb(); break;
+            }
+
+            command = command.Substring(token.Length);
+        } 
+    }
+
+    private bool ParseCommand(string command, out List<Moves> moves)
+    {
+        moves = new List<Moves>();
+        command = command.Replace(" ", "");
+        while (FindNextToken(command, out var token))
+        {
+            if (token == string.Empty) return true;
+            switch (token)
+            {
+                case "U": moves.Add(Moves.U); break;
+                case "U2": moves.Add(Moves.U2); break;
+                case "U'": moves.Add(Moves.Ub); break;
+                case "D": moves.Add(Moves.D); break;
+                case "D2": moves.Add(Moves.D2); break;
+                case "D'": moves.Add(Moves.Db); break;
+                case "F": moves.Add(Moves.F); break;
+                case "F2": moves.Add(Moves.F2); break;
+                case "F'": moves.Add(Moves.Fb); break;
+                case "B": moves.Add(Moves.B); break;
+                case "B2": moves.Add(Moves.B2); break;
+                case "B'": moves.Add(Moves.Bb); break;
+                case "R": moves.Add(Moves.R); break;
+                case "R2": moves.Add(Moves.R2); break;
+                case "R'": moves.Add(Moves.Rb); break;
+                case "L": moves.Add(Moves.L); break;
+                case "L2": moves.Add(Moves.L2); break;
+                case "L'": moves.Add(Moves.Lb); break;
                 
                 default: return false;
             }

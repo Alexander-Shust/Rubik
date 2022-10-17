@@ -73,19 +73,24 @@ public class CubeSolver : MonoBehaviour
     private void Start()
     {
 	    Reset();
-	    _state = Move(Moves.U, _state);
+	    // _state = Move(Moves.U, _state);
 	    // _state = Move(Moves.F2, _state);
 	    // _state = Move(Moves.F2, _state);
-	    _state = Move(Moves.F2, _state);
-	    _state = Move(Moves.L2, _state);
+	    // _state = Move(Moves.F2, _state);
+	    // _state = Move(Moves.L2, _state);
 	    // _state = Move(Moves.B2, _state);
-	    _state = Move(Moves.Bb, _state);
-	    _state = Move(Moves.Bb, _state);
-	    _state = Move(Moves.Bb, _state);
+	    // _state = Move(Moves.Bb, _state);
+	    // _state = Move(Moves.Bb, _state);
+	    // _state = Move(Moves.Bb, _state);
     }
 
-    public void Solve()
+    public void Solve(List<Moves> moves)
     {
+	    Reset();
+	    foreach (var move in moves)
+	    {
+		    _state = Move(move, _state);
+	    }
         UpdateState(SetEdgeOrientation());
         UpdateState(SetCornerOrientation());
         UpdateState(SetHtr());
@@ -121,7 +126,7 @@ public class CubeSolver : MonoBehaviour
 			    _ => throw new ArgumentOutOfRangeException()
 		    };
 	    }
-	    Debug.LogError(moveText);
+	    if (moveText != string.Empty) Debug.LogError(moveText);
     }
 
     private int[] Move(Moves move, int[] state)
