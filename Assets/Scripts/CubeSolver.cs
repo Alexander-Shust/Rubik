@@ -73,15 +73,6 @@ public class CubeSolver : MonoBehaviour
     private void Start()
     {
 	    Reset();
-	    // _state = Move(Moves.U, _state);
-	    // _state = Move(Moves.F2, _state);
-	    // _state = Move(Moves.F2, _state);
-	    // _state = Move(Moves.F2, _state);
-	    // _state = Move(Moves.L2, _state);
-	    // _state = Move(Moves.B2, _state);
-	    // _state = Move(Moves.Bb, _state);
-	    // _state = Move(Moves.Bb, _state);
-	    // _state = Move(Moves.Bb, _state);
     }
 
     public void Solve(List<Moves> moves)

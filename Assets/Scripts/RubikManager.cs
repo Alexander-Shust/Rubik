@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RubikManager : MonoBehaviour
 {
@@ -11,7 +13,10 @@ public class RubikManager : MonoBehaviour
     private CubeSolver _solver;
     
     [SerializeField]
-    private TMP_InputField _command;
+    private TMP_InputField _commandField;
+
+    [SerializeField]
+    private TMP_InputField _mixField;
     
     [SerializeField]
     private float _turnTime = 1.0f;
@@ -20,6 +25,10 @@ public class RubikManager : MonoBehaviour
     public LayerMask Mask;
     public List<PhysicalMove> PhysicalMoves;
     public bool IsMoving => _isMoving;
+
+    private string _inputCommand;
+    private int _mixCount;
+    private List<Moves> _inputMoves;
 
     private PhysicalMove _currentMove;
     private Quaternion _targetRotation;
@@ -30,7 +39,9 @@ public class RubikManager : MonoBehaviour
     {
         Manager = this;
         PhysicalMoves = new List<PhysicalMove>();
-        _command.text = "Enter spin sequence here...";
+        _inputMoves = new List<Moves>();
+        _mixCount = 5;
+        _commandField.text = "Enter spin sequence here...";
     }
 
     private void Update()
@@ -59,49 +70,73 @@ public class RubikManager : MonoBehaviour
         movable.Rotate(Vector3.up, _currentMove.Speed * 90.0f / _turnTime * deltaTime);
     }
 
-    public void Spin()
+    public void SetMixCount()
     {
-        if (ParseCommand(_command.text, out var moves))
+        if (int.TryParse(_mixField.text, out var mixCount))
         {
-            _solver.Solve(moves);
-            ExecuteCommand(_command.text);
-            _command.text = string.Empty;
-        }
-        else
-        {
-            _command.text = "Syntax error!";
+            _mixCount = mixCount;
         }
     }
 
-    private void ExecuteCommand(string command)
+    public void Spin()
     {
-        command = command.Replace(" ", "");
-        while (FindNextToken(command, out var token))
+        if (ParseCommand(_commandField.text, out var moves))
         {
-            if (token == string.Empty) return;
-            switch (token)
-            {
-                case "U": _manager.U(); break;
-                case "U2": _manager.U2(); break;
-                case "U'": _manager.Ub(); break;
-                case "D": _manager.D(); break;
-                case "D2": _manager.D2(); break;
-                case "D'": _manager.Db(); break;
-                case "F": _manager.F(); break;
-                case "F2": _manager.F2(); break;
-                case "F'": _manager.Fb(); break;
-                case "B": _manager.B(); break;
-                case "B2": _manager.B2(); break;
-                case "B'": _manager.Bb(); break;
-                case "R": _manager.R(); break;
-                case "R2": _manager.R2(); break;
-                case "R'": _manager.Rb(); break;
-                case "L": _manager.L(); break;
-                case "L2": _manager.L2(); break;
-                case "L'": _manager.Lb(); break;
-            }
+            _inputCommand = _commandField.text;
+            _inputMoves = moves;
+            ExecuteCommand();
+            _commandField.text = string.Empty;
+        }
+        else
+        {
+            _commandField.text = "Syntax error!";
+        }
+    }
 
-            command = command.Substring(token.Length);
+    public void Solve()
+    {
+        _solver.Solve(_inputMoves);
+    }
+
+    public void Mix()
+    {
+        Debug.LogError("Mixing...");
+        _inputMoves.Clear();
+        for (var i = 0; i < _mixCount; ++i)
+        {
+            _inputMoves.Add((Moves) Random.Range(0, 18));
+        }
+        ExecuteCommand();
+
+    }
+
+    private void ExecuteCommand()
+    {
+        foreach (var move in _inputMoves)
+        {
+            switch (move)
+            {
+                case Moves.U: _manager.U(); break;
+                case Moves.U2: _manager.U2(); break;
+                case Moves.Ub: _manager.Ub(); break;
+                case Moves.D: _manager.D(); break;
+                case Moves.D2: _manager.D2(); break;
+                case Moves.Db: _manager.Db(); break;
+                case Moves.F: _manager.F(); break;
+                case Moves.F2: _manager.F2(); break;
+                case Moves.Fb: _manager.Fb(); break;
+                case Moves.B: _manager.B(); break;
+                case Moves.B2: _manager.B2(); break;
+                case Moves.Bb: _manager.Bb(); break;
+                case Moves.L: _manager.L(); break;
+                case Moves.L2: _manager.L2(); break;
+                case Moves.Lb: _manager.Lb(); break;
+                case Moves.R: _manager.R(); break;
+                case Moves.R2: _manager.R2(); break;
+                case Moves.Rb: _manager.Rb(); break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         } 
     }
 
