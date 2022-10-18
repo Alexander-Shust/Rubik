@@ -29,6 +29,7 @@ public class RubikManager : MonoBehaviour
     private string _inputCommand;
     private int _mixCount;
     private List<Moves> _inputMoves;
+    private List<Moves> _outputMoves;
 
     private PhysicalMove _currentMove;
     private Quaternion _targetRotation;
@@ -84,7 +85,7 @@ public class RubikManager : MonoBehaviour
         {
             _inputCommand = _commandField.text;
             _inputMoves = moves;
-            ExecuteCommand();
+            ExecuteCommand(_inputMoves);
             _commandField.text = string.Empty;
         }
         else
@@ -95,7 +96,8 @@ public class RubikManager : MonoBehaviour
 
     public void Solve()
     {
-        _solver.Solve(_inputMoves);
+        _outputMoves = _solver.Solve(_inputMoves);
+        ExecuteCommand(_outputMoves);
     }
 
     public void Mix()
@@ -106,13 +108,13 @@ public class RubikManager : MonoBehaviour
         {
             _inputMoves.Add((Moves) Random.Range(0, 18));
         }
-        ExecuteCommand();
+        ExecuteCommand(_inputMoves);
 
     }
 
-    private void ExecuteCommand()
+    private void ExecuteCommand(List<Moves> moves)
     {
-        foreach (var move in _inputMoves)
+        foreach (var move in moves)
         {
             switch (move)
             {

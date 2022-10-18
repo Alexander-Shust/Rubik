@@ -5681,7 +5681,7 @@ PrefabInstance:
       objectReference: {fileID: 891007563}
     - target: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
       propertyPath: _turnTime
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
       propertyPath: _commandField

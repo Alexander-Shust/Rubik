@@ -75,17 +75,31 @@ public class CubeSolver : MonoBehaviour
 	    Reset();
     }
 
-    public void Solve(List<Moves> moves)
+    public List<Moves> Solve(List<Moves> moves)
     {
 	    Reset();
 	    foreach (var move in moves)
 	    {
 		    _state = Move(move, _state);
 	    }
-        UpdateState(SetEdgeOrientation());
-        UpdateState(SetCornerOrientation());
-        UpdateState(SetHtr());
-        UpdateState(SetFinal());
+
+	    var result = new List<Moves>();
+	    var phase1 = SetEdgeOrientation();
+        UpdateState(phase1);
+        result.AddRange(phase1);
+        
+        var phase2 = SetCornerOrientation();
+        UpdateState(phase2);
+        result.AddRange(phase2);
+        
+        var phase3 = SetHtr();
+        UpdateState(phase3);
+        result.AddRange(phase3);
+        
+        var phase4 = SetFinal();
+        UpdateState(phase4);
+        result.AddRange(phase4);
+        return result;
     }
 
     private void UpdateState(LinkedList<Moves> moves)

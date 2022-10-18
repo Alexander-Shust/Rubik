@@ -74,7 +74,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _manager: {fileID: 1638138125950605575}
   _solver: {fileID: 8030422393651252699}
-  _command: {fileID: 0}
+  _commandField: {fileID: 0}
+  _mixField: {fileID: 0}
   _turnTime: 1
   Mask:
     serializedVersion: 2
