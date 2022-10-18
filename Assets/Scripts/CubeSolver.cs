@@ -99,6 +99,8 @@ public class CubeSolver : MonoBehaviour
         var phase4 = SetFinal();
         UpdateState(phase4);
         result.AddRange(phase4);
+
+        Reset();
         return result;
     }
 

@@ -5664,25 +5664,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2120476845}
     - target: {fileID: 8030422393651252698, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
-      propertyPath: _rotateSpeed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8030422393651252698, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
       propertyPath: _startButton
       value: 
       objectReference: {fileID: 151529348}
     - target: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
-      propertyPath: _command
-      value: 
-      objectReference: {fileID: 512007535}
-    - target: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
       propertyPath: _mixField
       value: 
       objectReference: {fileID: 891007563}
-    - target: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
-      propertyPath: _turnTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8030422393658515084, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
       propertyPath: _commandField
       value: 

@@ -97,19 +97,20 @@ public class RubikManager : MonoBehaviour
     public void Solve()
     {
         _outputMoves = _solver.Solve(_inputMoves);
+        _inputMoves.Clear();
         ExecuteCommand(_outputMoves);
     }
 
     public void Mix()
     {
-        Debug.LogError("Mixing...");
-        _inputMoves.Clear();
+        var mixMoves = new List<Moves>();
         for (var i = 0; i < _mixCount; ++i)
         {
-            _inputMoves.Add((Moves) Random.Range(0, 18));
+            var randomMove = (Moves) Random.Range(0, 18); 
+            mixMoves.Add(randomMove);
+            _inputMoves.Add(randomMove);
         }
-        ExecuteCommand(_inputMoves);
-
+        ExecuteCommand(mixMoves);
     }
 
     private void ExecuteCommand(List<Moves> moves)
