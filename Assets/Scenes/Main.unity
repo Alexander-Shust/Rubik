@@ -286,10 +286,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Rb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -808,10 +812,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: F2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -1474,10 +1482,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: B2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -1911,10 +1923,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Lb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -2252,10 +2268,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: D
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -2751,10 +2771,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: R
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -2865,10 +2889,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Ub
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -3165,10 +3193,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Bb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -3279,10 +3311,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: R2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -3393,10 +3429,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Db
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -3507,10 +3547,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: D2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -3621,10 +3665,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: B
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -3735,10 +3783,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Fb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -3956,10 +4008,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: U2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -4272,10 +4328,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: F
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -4720,10 +4780,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: L2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -5260,10 +5324,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: L
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -5636,10 +5704,14 @@ PrefabInstance:
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8030422393651252696}
+      objectReference: {fileID: 62346075}
     - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: U
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905193387852488963, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RubikManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7726345896626430803, guid: 6ed8c6de09d57574bbcbbd92fbd786e4, type: 3}
       propertyPath: m_Name
@@ -5725,17 +5797,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
---- !u!114 &8030422393651252696 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1638138125950605575, guid: e5997698beb18084f8a847f40a82d88c, type: 3}
-  m_PrefabInstance: {fileID: 8030422393651252695}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 718197aa6d3b45b0879058bd27bd5f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8030422393651252698 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8030422393651252698, guid: e5997698beb18084f8a847f40a82d88c, type: 3}

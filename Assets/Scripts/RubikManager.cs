@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -71,6 +72,7 @@ public class RubikManager : MonoBehaviour
         movable.Rotate(Vector3.up, _currentMove.Speed * 90.0f / _turnTime * deltaTime);
     }
 
+    [UsedImplicitly]
     public void SetMixCount()
     {
         if (int.TryParse(_mixField.text, out var mixCount))
@@ -78,14 +80,15 @@ public class RubikManager : MonoBehaviour
             _mixCount = mixCount;
         }
     }
-
+    
+    [UsedImplicitly]
     public void Spin()
     {
         if (ParseCommand(_commandField.text, out var moves))
         {
             _inputCommand = _commandField.text;
-            _inputMoves = moves;
-            ExecuteCommand(_inputMoves);
+            _inputMoves.AddRange(moves);
+            ExecuteCommand(moves);
             _commandField.text = string.Empty;
         }
         else
@@ -94,15 +97,21 @@ public class RubikManager : MonoBehaviour
         }
     }
 
+    [UsedImplicitly]
     public void Solve()
     {
+        if (_isMoving) return;
+        
         _outputMoves = _solver.Solve(_inputMoves);
-        _inputMoves.Clear();
         ExecuteCommand(_outputMoves);
+        _inputMoves.Clear();
     }
 
+    [UsedImplicitly]
     public void Mix()
     {
+        if (_isMoving) return;
+        
         var mixMoves = new List<Moves>();
         for (var i = 0; i < _mixCount; ++i)
         {
@@ -199,5 +208,113 @@ public class RubikManager : MonoBehaviour
                 return false;
         }
         return true;
+    }
+    
+    public void U()
+    {
+        _inputMoves.Add(Moves.U);
+        _manager.U();
+    }
+
+    public void U2()
+    {
+        _inputMoves.Add(Moves.U2);
+        _manager.U2();
+    }
+
+    public void Ub()
+    {
+        _inputMoves.Add(Moves.Ub);
+        _manager.Ub();
+    }
+
+    public void D()
+    {
+        _inputMoves.Add(Moves.D);
+        _manager.D();
+    }
+
+    public void D2()
+    {
+        _inputMoves.Add(Moves.D2);
+        _manager.D2();
+    }
+
+    public void Db()
+    {
+        _inputMoves.Add(Moves.Db);
+        _manager.Db();
+    }
+
+    public void L()
+    {
+        _inputMoves.Add(Moves.L);
+        _manager.L();
+    }
+
+    public void L2()
+    {
+        _inputMoves.Add(Moves.L2);
+        _manager.L2();
+    }
+
+    public void Lb()
+    {
+        _inputMoves.Add(Moves.Lb);
+        _manager.Lb();
+    }
+
+    public void R()
+    {
+        _inputMoves.Add(Moves.R);
+        _manager.R();
+    }
+
+    public void R2()
+    {
+        _inputMoves.Add(Moves.R2);
+        _manager.R2();
+    }
+
+    public void Rb()
+    {
+        _inputMoves.Add(Moves.Rb);
+        _manager.Rb();
+    }
+
+    public void F()
+    {
+        _inputMoves.Add(Moves.F);
+        _manager.F();
+    }
+
+    public void F2()
+    {
+        _inputMoves.Add(Moves.F2);
+        _manager.F2();
+    }
+
+    public void Fb()
+    {
+        _inputMoves.Add(Moves.Fb);
+        _manager.Fb();
+    }
+
+    public void B()
+    {
+        _inputMoves.Add(Moves.B);
+        _manager.B();
+    }
+
+    public void B2()
+    {
+        _inputMoves.Add(Moves.B2);
+        _manager.B2();
+    }
+
+    public void Bb()
+    {
+        _inputMoves.Add(Moves.Bb);
+        _manager.Bb();
     }
 }
