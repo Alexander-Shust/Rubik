@@ -122,6 +122,11 @@ public class RubikManager : MonoBehaviour
         ExecuteCommand(mixMoves);
     }
 
+    public void SetSolution(string moves, int count)
+    {
+        _commandField.text = count + " moves: " + moves;
+    }
+
     private void ExecuteCommand(List<Moves> moves)
     {
         foreach (var move in moves)

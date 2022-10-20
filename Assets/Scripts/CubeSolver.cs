@@ -106,8 +106,7 @@ public class CubeSolver : MonoBehaviour
         result.AddRange(phase4);
 
         Reset();
-        Debug.LogError(moveText);
-        Debug.LogError(result.Count);
+        RubikManager.Manager.SetSolution(moveText, result.Count);
         return result;
     }
 
